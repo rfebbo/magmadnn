@@ -2,7 +2,7 @@
 
 namespace magmadnn {
 namespace data {
-
+   
 #define FREAD_CHECK(res, nmemb)           \
     if ((res) != (nmemb)) {               \
         fprintf(stderr, "fread fail.\n"); \
