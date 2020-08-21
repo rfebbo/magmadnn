@@ -118,6 +118,9 @@ export LIBDIRS
 export LIBS
 export USE_MPI
 export USE_MKLDNN
+export USE_HDF5
+export HDF5DIR
+
 
 # default extension for object files
 o_ext ?= o
