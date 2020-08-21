@@ -3,6 +3,7 @@
 SRC_FILES := $(wildcard *.cpp)
 SRC_FILES := $(filter-out distributed.cpp, $(SRC_FILES))
 SRC_FILES := $(filter-out distributed_momentum_sgd.cpp, $(SRC_FILES))
+SRC_FILES := $(filter-out resnet_cifar10.cpp, $(SRC_FILES))
 OBJ_FILES := $(patsubst %.cpp, %.o, $(SRC_FILES))
 
 TARGETS := $(patsubst %.cpp, %.out, $(SRC_FILES)) #distributed
@@ -17,7 +18,7 @@ RPATH_FLAGS := -Wl,-rpath,$(prefix)/lib
 LIB_PATH := $(prefix)/lib
 DEST = ./bin
 
-USE_HDF5 ?= 0
+USE_HDF5 = 1
 ifeq ($(USE_HDF5),1)
 TESTING_FLAGS += -DUSE_HDF5
 HDF5DIR ?= /usr/local/hdf5

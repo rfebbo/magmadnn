@@ -22,7 +22,7 @@ endif()
 
 ########################################
 # MagmaDNN options
-option(MAGMADNN_ENABLE_CUDA "Enable use of CUDA library and compilation of CUDA kernel" OFF)
+option(MAGMADNN_ENABLE_CUDA "Enable use of CUDA library and compilation of CUDA kernel" ON)
 option(MAGMADNN_ENABLE_MPI "Enable distributed memory routines using MPI" OFF)
 option(MAGMADNN_ENABLE_OMP "Enable parallelization using OpenMP library" OFF)
 option(MAGMADNN_ENABLE_MKLDNN "Enable use of MKLDNN library" OFF)

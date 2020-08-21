@@ -9,13 +9,13 @@
 using namespace magmadnn;
 using namespace H5;
 
-struct data {
+struct hdf5_data {
     Tensor<float> *images;
     Tensor<float> *labels;
 };
 
 bool is_file_exist(H5std_string fileName);
-data read_cbed_data(int &file_cntr, int num_labels);
+hdf5_data read_cbed_data(int &file_cntr, int num_labels);
 
 int main() {
     magmadnn_init();
@@ -56,7 +56,7 @@ int main() {
 
     int file_cntr = 0;
     for (int i = 0; i < 20; i++) {
-        data d = read_cbed_data(file_cntr, num_labels);
+        hdf5_data d = read_cbed_data(file_cntr, num_labels);
         Tensor<float> *images = d.images;
         Tensor<float> *labels = d.labels;
         for (int i = 0; i < 10; i++) std::cout << images->get(i) << " ";
@@ -72,13 +72,13 @@ bool is_file_exist(H5std_string fileName) {
     return infile.good();
 }
 
-data read_cbed_data(int &file_cntr, int num_labels) {
+hdf5_data read_cbed_data(int &file_cntr, int num_labels) {
     const H5std_string FILE_NAME("/home/user1/train/batch_train_");
     int cntr = 0;
 
     Tensor<float> *images = new Tensor<float>({1400, 3, 512, 512}, {NONE, {}}, HOST);
     Tensor<float> *labels = new Tensor<float>({1400, num_labels}, {NONE, {}}, HOST);
-    data grouped_data = {images, labels};
+    hdf5_data grouped_data = {images, labels};
 
     for (int i = file_cntr; i < file_cntr + 30; i++, file_cntr++) {
         const H5std_string FILE_NAME_I(FILE_NAME + std::to_string(i) + ".h5");
